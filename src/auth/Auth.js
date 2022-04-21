@@ -1,7 +1,8 @@
+import { Outlet } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import Login from './login';
+import { ReactComponent as Logo } from '../assets/logo.svg';
 
 const Auth = () => {
   return (
@@ -14,9 +15,13 @@ const Auth = () => {
             alignItems: 'center',
             maxWidth: 320,
             height: '100%',
+            position: 'relative',
           }}
         >
-          <Login />
+          <Logo style={{ position: 'absolute', top: 40, left: 0 }} />
+          <div>
+            <Outlet />
+          </div>
         </Box>
       </Grid>
       <Grid

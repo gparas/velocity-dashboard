@@ -1,15 +1,23 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext } from 'react';
 
 const AuthContext = createContext();
 
-function AuthProvider(props) {
-  let [user, setUser] = useState(null);
+const localStorageKey = 'user';
 
-  const signin = (newUser) => {
+function AuthProvider(props) {
+  let [user, setUser] = useState(() =>
+    window.localStorage.getItem(localStorageKey)
+  );
+
+  const signin = (newUser, callback) => {
+    window.localStorage.setItem(localStorageKey, newUser);
     setUser(newUser);
+    callback();
   };
   const signout = () => {
+    window.localStorage.removeItem(localStorageKey);
     setUser(null);
+    callback();
   };
 
   const value = { user, signin, signout };

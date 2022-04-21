@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="102" height="28" viewBox="0 0 102 28">
+  <g>
+    <text font-size="0" style="white-space:pre" transform="translate(28 1)">
+      <tspan x="0" y="18" fill="rgb(46,56,77)" font-family="Rubik" font-size="19" font-weight="500" style="white-space:pre;text-transform:lowercase" letter-spacing="-.475">Velocity</tspan>
+    </text>
+    <g>
+      <path fill="rgb(44,194,165)" fill-rule="evenodd" d="M14 0v9.33333333c0 7.7319865-6.2680135 14-14 14V14C0 6.2680135 6.2680135 0 14 0z"/>
+      <path fill="rgb(46,91,255)" fill-rule="evenodd" d="M21.1361667 5.788282l-3.192188 8.77046447C15.29948357 21.82443712 7.26569066 25.57065628 0 22.92616115l3.192188-8.77046446C5.83668313 6.89000604 13.87047605 3.14378688 21.1361667 5.78828201z"/>
+    </g>
+  </g>
+</svg>
