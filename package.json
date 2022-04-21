@@ -1,6 +1,9 @@
 {
   "name": "velocity-dashboard",
   "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
