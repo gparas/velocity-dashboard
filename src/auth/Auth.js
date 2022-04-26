@@ -8,20 +8,9 @@ const Auth = () => {
   return (
     <Grid container component="main" sx={{ height: '100vh' }}>
       <Grid item xs={12} sm={7} md={6} component={Paper} elevation={0}>
-        <Box
-          sx={{
-            mx: 'auto',
-            display: 'flex',
-            alignItems: 'center',
-            maxWidth: 320,
-            height: '100%',
-            position: 'relative',
-          }}
-        >
-          <Logo style={{ position: 'absolute', top: 40, left: 0 }} />
-          <div>
-            <Outlet />
-          </div>
+        <Box mx="auto" p={6} sx={{ maxWidth: 416 }}>
+          <Logo style={{ marginBottom: 48 }} />
+          <Outlet />
         </Box>
       </Grid>
       <Grid

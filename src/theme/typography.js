@@ -48,6 +48,13 @@ const variants = theme => {
       letterSpacing: '1.13px',
       textTransform: 'uppercase',
     },
+    button: {
+      fontFamily,
+      fontSize: fontSize(15),
+      lineHeight: 1,
+      letterSpacing: 0,
+      textTransform: 'none',
+    },
     subtitle1: undefined,
     subtitle2: undefined,
     body2: undefined,

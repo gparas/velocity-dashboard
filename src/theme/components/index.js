@@ -1,5 +1,1 @@
-import MuiButton from './MuiButton';
-
-export default {
-  MuiButton,
-};
+export { default } from './components';
