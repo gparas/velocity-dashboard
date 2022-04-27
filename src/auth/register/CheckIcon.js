@@ -1,6 +1,6 @@
 import Avatar from '@mui/material/Avatar';
 import Grow from '@mui/material/Grow';
-import { Check } from '../icons';
+import { Check } from '../../icons';
 
 const CheckIcon = ({ active }) => (
   <Grow in={active}>

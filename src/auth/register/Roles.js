@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActionArea from '@mui/material/CardActionArea';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import { Energy, Message } from '../icons';
+import { Energy, Message } from '../../icons';
 import CheckIcon from './CheckIcon';
 import C from './constants';
 
