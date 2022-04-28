@@ -1,3 +1,9 @@
+export { default as Chat } from './Chat';
 export { default as Check } from './Check';
 export { default as Energy } from './Energy';
+export { default as Grid } from './Grid';
+export { default as Menu } from './Menu';
 export { default as Message } from './Message';
+export { default as Monitor } from './Monitor';
+export { default as Notification } from './Notification';
+export { default as Options } from './Options';

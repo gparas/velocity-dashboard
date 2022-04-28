@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../../context/auth-context';
+import useAuth from '../../hooks/useAuth';
 import { Title, Form, Footer } from '../components';
 import Roles from './Roles';
 import C from './constants';

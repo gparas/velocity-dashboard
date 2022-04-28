@@ -5,13 +5,13 @@ import CardContent from '@mui/material/CardContent';
 import CardActionArea from '@mui/material/CardActionArea';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import { Energy, Message } from '../../icons';
+import { Energy, Chat } from '../../icons';
 import CheckIcon from './CheckIcon';
 import C from './constants';
 
 const IconComponents = {
   [C.AVAILABLE_ROLES.ADMINISTRATOR]: Energy,
-  [C.AVAILABLE_ROLES.OPERATOR]: Message,
+  [C.AVAILABLE_ROLES.OPERATOR]: Chat,
 };
 
 const Roles = ({ activeRole, onChangeActiveRole }) => {

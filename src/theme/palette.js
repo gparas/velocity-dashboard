@@ -14,6 +14,9 @@ const light = {
     secondary: '#8798AD',
     disabled: '#B0BAC9',
   },
+  action: {
+    active: '#8798AD',
+  },
   background: {
     paper: '#fff',
     default: '#F4F6FC',

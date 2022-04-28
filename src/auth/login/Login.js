@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../../context/auth-context';
+import useAuth from '../../hooks/useAuth';
 import { Title, Form, Footer } from '../components';
 import C from './constants';
 

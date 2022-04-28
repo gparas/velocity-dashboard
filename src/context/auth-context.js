@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from 'react';
+import { useState, createContext } from 'react';
 
 const AuthContext = createContext();
 
@@ -24,6 +24,4 @@ function AuthProvider(props) {
   return <AuthContext.Provider value={value} {...props} />;
 }
 
-const useAuth = () => useContext(AuthContext);
-
-export { AuthProvider, useAuth };
+export { AuthProvider, AuthContext };
