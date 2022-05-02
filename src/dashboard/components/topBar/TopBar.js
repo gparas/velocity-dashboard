@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { toggleOpen } from '../../../store/navigation/navigationSlice';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
@@ -12,10 +14,12 @@ import { ReactComponent as Logo } from '../../../assets/logo.svg';
 import userAvatar from '../../../assets/avatar.jpeg';
 
 const TopBar = () => {
+  const dispatch = useDispatch();
+
   return (
     <AppBar elevation={0} color="inherit">
       <Toolbar>
-        <IconButton edge="start">
+        <IconButton edge="start" onClick={() => dispatch(toggleOpen())}>
           <MenuIcon />
         </IconButton>
         <Container
