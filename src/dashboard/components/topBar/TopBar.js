@@ -10,13 +10,10 @@ import NavToggler from './NavToggler';
 
 const TopBar = () => {
   return (
-    <AppBar elevation={0} color="inherit">
-      <Toolbar>
+    <AppBar elevation={0} color="inherit" sx={{ zIndex: 1201 }}>
+      <Toolbar disableGutters>
         <NavToggler />
-        <Container
-          disableGutters
-          sx={{ display: 'flex', alignItems: 'center' }}
-        >
+        <Container sx={{ display: 'flex', alignItems: 'center' }}>
           <Brand />
           <Notification />
           <Message />

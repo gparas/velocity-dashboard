@@ -1,16 +1,20 @@
+import { useRoutes } from 'react-router-dom';
+import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Container from '@mui/material/Container';
-import Card from '@mui/material/Card';
-import TopBar from './components/topBar/TopBar';
+import TopBar from './components/topBar';
+import Navigation from './components/navigation';
+import routes from './routes';
 
 const Dashboard = () => {
+  const element = useRoutes(routes);
   return (
     <>
       <TopBar />
       <Toolbar />
-      <Container>
-        <Card>Foo</Card>
-      </Container>
+      <Box sx={{ display: 'flex' }}>
+        <Navigation />
+        {element}
+      </Box>
     </>
   );
 };

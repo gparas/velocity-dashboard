@@ -5,7 +5,7 @@ import Icon from '../../../icons/Notification';
 const Notification = () => {
   return (
     <IconButton>
-      <Icon />
+      <Icon fontSize="small" />
     </IconButton>
   );
 };

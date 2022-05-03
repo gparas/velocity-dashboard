@@ -4,8 +4,8 @@ import Icon from '../../../icons/Message';
 
 const Message = () => {
   return (
-    <IconButton sx={{ mx: 2 }}>
-      <Icon />
+    <IconButton sx={{ mr: 1 }}>
+      <Icon fontSize="small" />
     </IconButton>
   );
 };

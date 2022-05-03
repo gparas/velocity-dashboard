@@ -1,3 +1,4 @@
+export { default as Chart } from './Chart';
 export { default as Chat } from './Chat';
 export { default as Check } from './Check';
 export { default as Energy } from './Energy';
@@ -7,3 +8,4 @@ export { default as Message } from './Message';
 export { default as Monitor } from './Monitor';
 export { default as Notification } from './Notification';
 export { default as Options } from './Options';
+export { default as Settings } from './Settings';
