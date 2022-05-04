@@ -9,9 +9,13 @@ import ListItemButton from '@mui/material/ListItemButton';
 const Link = ({ to, children, ...props }) => {
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: true });
-  console.log(match);
   return (
-    <ListItemButton component={RouterLink} to={to} selected={match} {...props}>
+    <ListItemButton
+      to={to}
+      component={RouterLink}
+      selected={Boolean(match)}
+      {...props}
+    >
       {children}
     </ListItemButton>
   );

@@ -3,9 +3,13 @@ import { Routes, Route } from 'react-router-dom';
 import RequireAuth from './components/requireAuth';
 
 const Auth = lazy(() => import('./auth'));
-const Dashboard = lazy(() => import('./dashboard'));
 const Login = lazy(() => import('./auth/login'));
 const Register = lazy(() => import('./auth/register'));
+const Dashboard = lazy(() => import('./dashboard'));
+const Overview = lazy(() => import('./dashboard/overview'));
+const Analytics = lazy(() => import('./dashboard/analytics'));
+const Chat = lazy(() => import('./dashboard/chat'));
+const Settings = lazy(() => import('./dashboard/settings'));
 
 export default function App() {
   return (
@@ -22,7 +26,12 @@ export default function App() {
               <Dashboard />
             </RequireAuth>
           }
-        />
+        >
+          <Route index={true} element={<Overview />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="chat" element={<Chat />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
       </Routes>
     </Suspense>
   );
