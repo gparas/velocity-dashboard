@@ -1,5 +1,6 @@
 import { useQuery } from 'react-query';
 import Papa from 'papaparse';
+import U from '../utils';
 
 const parseData = () =>
   new Promise(resolve => {
@@ -14,6 +15,10 @@ const parseData = () =>
 
 const fetchParsedData = async () => {
   const parsedData = await parseData();
+  parsedData.forEach(item => {
+    item.month = U.getMonth(item.date);
+    item.price = U.getNumber(item.price);
+  });
   return parsedData;
 };
 

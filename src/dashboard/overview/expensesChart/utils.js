@@ -4,11 +4,6 @@ import C from './constants';
 const getChartData = data => {
   if (!data) return null;
 
-  data.forEach(item => {
-    item.month = U.getMonth(item.date);
-    item.sum = U.getNumber(item.price);
-  });
-
   const groupDataByCategory = U.groupArrayBy(data, 'category');
   const datasets = [];
   const labels = [];
@@ -21,12 +16,7 @@ const getChartData = data => {
       'month'
     );
     Object.keys(groupDataByMonth).forEach(month => {
-      const sum = groupDataByMonth[month].reduce(
-        (previousValue, currentValue) => {
-          return previousValue + currentValue.sum;
-        },
-        0
-      );
+      const sum = U.getTotalPrice(groupDataByMonth[month]);
       data.push(sum);
       labels.push(month);
     });

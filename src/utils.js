@@ -15,8 +15,8 @@ const getNumber = value => {
 
 const fromatNumber = num =>
   new Intl.NumberFormat('de-DE', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
   }).format(num);
 
 const getUniqueArray = array =>
@@ -27,10 +27,23 @@ const getMonth = date =>
     month: 'long',
   });
 
+const getTotalPrice = array =>
+  array.reduce((previousValue, currentValue) => {
+    return previousValue + currentValue.price;
+  }, 0);
+
+const getHighestPrice = array =>
+  Math.max.apply(
+    Math,
+    array.map(item => item.price)
+  );
+
 export default {
   groupArrayBy,
   getUniqueArray,
   getNumber,
   fromatNumber,
   getMonth,
+  getTotalPrice,
+  getHighestPrice,
 };
