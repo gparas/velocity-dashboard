@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
-import { toggleOpen } from '../../../store/navigation/navigationSlice';
-import MenuIcon from '../../../icons/Menu';
+import { toggleOpen } from '../../store/navigation/navigationSlice';
+import MenuIcon from '../../icons/Menu';
 
 const NavToggler = () => {
   const dispatch = useDispatch();

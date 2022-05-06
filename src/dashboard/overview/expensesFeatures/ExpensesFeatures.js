@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
-import Card from '../../components/card';
+import Card from '../../../components/card';
 import useData from '../../../hooks/useData';
 import U from './utils';
 

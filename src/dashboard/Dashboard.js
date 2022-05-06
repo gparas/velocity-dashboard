@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import TopBar from './components/topBar';
-import Navigation from './components/navigation';
+import TopBar from '../components/topBar';
+import Navigation from '../components/navigation';
 
 const Dashboard = () => (
   <>

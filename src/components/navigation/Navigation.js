@@ -8,9 +8,9 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { selectors } from '../../../store/navigation';
-import routes from '../../../routes';
-import userAvatar from '../../../assets/avatar.jpeg';
+import { selectors } from '../../store/navigation';
+import routes from '../../routes';
+import userAvatar from '../../assets/avatar.jpeg';
 import Drawer from './Drawer';
 import Link from './Link';
 

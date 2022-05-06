@@ -1,5 +1,5 @@
 import useData from '../../../hooks/useData';
-import Card from '../../components/card';
+import Card from '../../../components/card';
 import Chart from './Chart';
 
 const ExpensesChart = () => {

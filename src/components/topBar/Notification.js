@@ -1,13 +1,13 @@
 import React from 'react';
 import IconButton from '@mui/material/IconButton';
-import Icon from '../../../icons/Message';
+import Icon from '../../icons/Notification';
 
-const Message = () => {
+const Notification = () => {
   return (
-    <IconButton sx={{ mr: 1 }}>
+    <IconButton>
       <Icon fontSize="small" />
     </IconButton>
   );
 };
 
-export default Message;
+export default Notification;
