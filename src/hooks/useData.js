@@ -10,6 +10,9 @@ const parseData = () =>
       complete: results => {
         resolve(results.data);
       },
+      error: () => {
+        throw new Error('An error occurred please try again');
+      },
     });
   });
 

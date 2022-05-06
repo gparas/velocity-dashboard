@@ -22,6 +22,11 @@ const fromatNumber = num =>
 const getUniqueArray = array =>
   array.filter((element, index, array) => array.indexOf(element) === index);
 
+const flattenedArray = array =>
+  array.reduce((total, subArray) => {
+    return total.concat(subArray);
+  }, []);
+
 const getMonth = date =>
   new Date(date).toLocaleString('en-us', {
     month: 'long',
@@ -46,4 +51,5 @@ export default {
   getMonth,
   getTotalPrice,
   getHighestPrice,
+  flattenedArray,
 };

@@ -5,7 +5,10 @@ import CardHeader from '@mui/material/CardHeader';
 const Card = ({ title, isLoading, children }) => {
   return (
     <MuiCard>
-      <CardHeader title={title} />
+      <CardHeader
+        title={title}
+        titleTypographyProps={{ variant: 'caption', color: 'textSecondary' }}
+      />
       <CardContent>{isLoading ? '...loading' : children}</CardContent>
     </MuiCard>
   );

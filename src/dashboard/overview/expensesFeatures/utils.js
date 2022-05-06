@@ -1,6 +1,17 @@
 import U from '../../../utils';
 
-const getTotalExpenses = data => '€' + U.fromatNumber(U.getTotalPrice(data));
+const getMonthsFromData = data => data.map(({ month }) => month);
+
+const getTotalExpenses = data => {
+  const pipeline = [getMonthsFromData, U.flattenedArray, U.getUniqueArray];
+  const months = pipeline.reduce((total, func) => {
+    return func(total);
+  }, data);
+  return {
+    period: `from ${months[0]} - ${months[months.length - 1]}`,
+    total: '€' + U.fromatNumber(U.getTotalPrice(data)),
+  };
+};
 
 const getMostSpending = data => {
   const highestPrice = U.getHighestPrice(data);

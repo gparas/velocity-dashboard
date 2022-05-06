@@ -5,14 +5,17 @@ import Card from '../../components/card';
 import useData from '../../../hooks/useData';
 import U from './utils';
 
-const ExpensesAnalysis = () => {
+const ExpensesFeatures = () => {
   const { data, isLoading } = useData();
   return (
     <Grid container spacing={3}>
       <Grid item md={4}>
         <Card title="Total Expenses">
           <Typography variant="h1" component="div">
-            {isLoading ? <Skeleton /> : U.getTotalExpenses(data)}
+            {isLoading ? <Skeleton /> : U.getTotalExpenses(data).total}
+          </Typography>
+          <Typography component="div">
+            {isLoading ? <Skeleton /> : U.getTotalExpenses(data).period}
           </Typography>
         </Card>
       </Grid>
@@ -21,7 +24,7 @@ const ExpensesAnalysis = () => {
           <Typography variant="h1" component="div">
             {isLoading ? <Skeleton /> : U.getMostSpendingCategory(data).price}
           </Typography>
-          <Typography component="div" color="textSecondary">
+          <Typography component="div">
             {isLoading ? (
               <Skeleton />
             ) : (
@@ -35,7 +38,7 @@ const ExpensesAnalysis = () => {
           <Typography variant="h1" component="div">
             {isLoading ? <Skeleton /> : U.getMostSpending(data).price}
           </Typography>
-          <Typography component="div" color="textSecondary">
+          <Typography component="div">
             {isLoading ? <Skeleton /> : U.getMostSpending(data).description}
           </Typography>
         </Card>
@@ -44,4 +47,4 @@ const ExpensesAnalysis = () => {
   );
 };
 
-export default ExpensesAnalysis;
+export default ExpensesFeatures;

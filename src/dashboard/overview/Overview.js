@@ -1,7 +1,7 @@
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import ExpensesChart from './expensesChart';
-import ExpensesAnalysis from './expensesAnalysis';
+import ExpensesFeatures from './expensesFeatures';
 
 const Overview = () => {
   return (
@@ -11,7 +11,7 @@ const Overview = () => {
           <ExpensesChart />
         </Grid>
         <Grid item xs={12}>
-          <ExpensesAnalysis />
+          <ExpensesFeatures />
         </Grid>
       </Grid>
     </Container>
