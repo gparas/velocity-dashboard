@@ -6,48 +6,40 @@ const getChartData = (data, theme) => {
   let series = [];
 
   const groupDataByCategory = U.groupArrayBy(data, 'category');
+  const totalExpenses = U.getTotalPrice(data);
   Object.keys(groupDataByCategory).forEach(category => {
     const totalPrice = U.getTotalPrice(groupDataByCategory[category]);
-    series.push({ category, totalPrice });
+    const percentage = (totalPrice / totalExpenses) * 100;
+    series.push({ category, percentage });
   });
 
-  series.sort((a, b) => b.totalPrice - a.totalPrice);
+  series.sort((a, b) => b.percentage - a.percentage);
 
   const labels = series.map(({ category }) => category);
-  const datasetsData = series.map(({ totalPrice }) => totalPrice);
+  const datasetsData = series.map(({ percentage }) => percentage);
 
   return {
     labels,
     datasets: [
       {
-        label: 'total',
         data: datasetsData,
-        backgroundColor: theme.palette.charts[1],
+        backgroundColor: theme.palette.charts,
       },
     ],
   };
 };
 
-const getTooltipLabel = context => {
-  let label = context.dataset.label || '';
-
-  if (label) {
-    label += ': ';
-  }
-  if (context.raw !== null) {
-    label += U.fromatNumber(context.raw);
-  }
-  return label;
-};
-
 const getChartConfig = (data, theme) => ({
-  type: 'bar',
+  type: 'doughnut',
   data: getChartData(data, theme),
   options: {
-    indexAxis: 'y',
     plugins: {
       legend: {
-        display: false,
+        position: 'right',
+        labels: {
+          usePointStyle: true,
+          boxWidth: 4,
+        },
       },
       title: {
         display: false,
@@ -55,7 +47,9 @@ const getChartConfig = (data, theme) => ({
       tooltip: {
         displayColors: false,
         callbacks: {
-          label: context => getTooltipLabel(context),
+          label: ({ label, formattedValue }) => {
+            return `${label}: ${formattedValue}%`;
+          },
         },
       },
     },

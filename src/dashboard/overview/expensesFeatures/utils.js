@@ -9,14 +9,14 @@ const getTotalExpenses = data => {
   }, data);
   return {
     period: `from ${months[0]} - ${months[months.length - 1]}`,
-    total: '€' + U.fromatNumber(U.getTotalPrice(data)),
+    total: U.fromatNumber(U.getTotalPrice(data)),
   };
 };
 
 const getMostSpending = data => {
   const highestPrice = U.getHighestPrice(data);
   return {
-    price: '€' + U.fromatNumber(highestPrice),
+    price: U.fromatNumber(highestPrice),
     description: data.filter(item => item.price === highestPrice)[0]
       .description,
   };
@@ -38,7 +38,7 @@ const getMostSpendingCategory = data => {
 
   return {
     category: highestPriceCategory,
-    price: '€' + U.fromatNumber(highestPrice),
+    price: U.fromatNumber(highestPrice),
   };
 };
 

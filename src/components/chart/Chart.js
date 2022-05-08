@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
-import U from './utils';
+import ChartJs from 'chart.js/auto';
 
-const myChart = ({ data }) => {
+const Chart = ({ config }) => {
   const chartRef = useRef(null);
 
   const destroyChart = () => {
@@ -15,10 +14,10 @@ const myChart = ({ data }) => {
     if (!chartRef.current) return;
 
     const ctx = chartRef.current.getContext('2d');
-    new Chart(ctx, U.getChartConfig(data));
+    new ChartJs(ctx, config);
     return () => destroyChart();
   }, []);
-  return <canvas id="myChart" ref={chartRef} />;
+  return <canvas ref={chartRef} />;
 };
 
-export default myChart;
+export default Chart;

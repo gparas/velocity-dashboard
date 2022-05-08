@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import Auth from './auth';
 import Dashboard from './dashboard';
 import RequireAuth from './components/requireAuth';
+import NoMatch from './components/noMatch';
 import {
   Chat as ChatIcon,
   Grid as OverviewIcon,
@@ -88,6 +89,10 @@ const routes = [
         icon: <SettingsIcon fontSize="small" />,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <NoMatch />,
   },
 ];
 

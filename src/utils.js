@@ -17,6 +17,8 @@ const fromatNumber = num =>
   new Intl.NumberFormat('de-DE', {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
+    style: 'currency',
+    currency: 'EUR',
   }).format(num);
 
 const getUniqueArray = array =>

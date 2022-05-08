@@ -1,3 +1,4 @@
+import { alpha } from '@mui/system';
 const mode = 'light';
 
 const primary = {
@@ -5,7 +6,23 @@ const primary = {
 };
 
 const secondary = {
-  main: '#a1eba6',
+  main: '#00C1D4',
+};
+
+const tertiary = {
+  main: '#8C54FF',
+};
+
+const warning = {
+  main: '#F7C137',
+};
+
+const error = {
+  main: '#D63649',
+};
+
+const success = {
+  main: '#33AC2E',
 };
 
 const light = {
@@ -23,6 +40,18 @@ const light = {
   },
 };
 
+const charts = [
+  primary.main,
+  alpha(primary.main, 0.65),
+  tertiary.main,
+  alpha(tertiary.main, 0.65),
+  secondary.main,
+  alpha(secondary.main, 0.65),
+  warning.main,
+  alpha(warning.main, 0.65),
+  alpha(error.main, 0.65),
+];
+
 const dark = {
   background: {
     paper: '#212624',
@@ -39,5 +68,9 @@ export default {
   mode,
   primary,
   secondary,
+  success,
+  error,
+  warning,
+  charts,
   ...modes[mode],
 };
