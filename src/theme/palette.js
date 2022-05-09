@@ -6,11 +6,11 @@ const primary = {
 };
 
 const secondary = {
-  main: '#00C1D4',
+  main: '#8C54FF',
 };
 
 const tertiary = {
-  main: '#8C54FF',
+  main: '#00C1D4',
 };
 
 const warning = {
@@ -43,13 +43,11 @@ const light = {
 const charts = [
   primary.main,
   alpha(primary.main, 0.65),
-  tertiary.main,
-  alpha(tertiary.main, 0.65),
   secondary.main,
   alpha(secondary.main, 0.65),
+  tertiary.main,
+  alpha(tertiary.main, 0.7),
   warning.main,
-  alpha(warning.main, 0.65),
-  alpha(error.main, 0.65),
 ];
 
 const dark = {

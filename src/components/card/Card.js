@@ -4,7 +4,7 @@ import CardHeader from '@mui/material/CardHeader';
 
 const Card = ({ title, isLoading, children }) => {
   return (
-    <MuiCard>
+    <MuiCard style={{ height: '100%' }}>
       <CardHeader
         title={title}
         titleTypographyProps={{ variant: 'caption', color: 'textSecondary' }}

@@ -1,4 +1,5 @@
 import U from '../../../utils';
+import C from './constants';
 
 const getChartData = (data, theme) => {
   if (!data) return null;
@@ -15,8 +16,10 @@ const getChartData = (data, theme) => {
 
   series.sort((a, b) => b.percentage - a.percentage);
 
-  const labels = series.map(({ category }) => category);
-  const datasetsData = series.map(({ percentage }) => percentage);
+  const labels = series.slice(0, C.DATA_SLICE).map(({ category }) => category);
+  const datasetsData = series
+    .slice(0, C.DATA_SLICE)
+    .map(({ percentage }) => percentage);
 
   return {
     labels,
@@ -33,12 +36,13 @@ const getChartConfig = (data, theme) => ({
   type: 'doughnut',
   data: getChartData(data, theme),
   options: {
+    cutout: '70%',
     plugins: {
       legend: {
         position: 'right',
         labels: {
           usePointStyle: true,
-          boxWidth: 4,
+          boxWidth: 8,
         },
       },
       title: {

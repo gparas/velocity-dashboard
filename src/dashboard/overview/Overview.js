@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import ExpensesBreakdown from './expensesBreakdown';
 import ExpensesChart from './expensesChart';
 import ExpensesFeatures from './expensesFeatures';
+import Activity from './activity';
 
 const Overview = () => {
   return (
@@ -14,10 +15,10 @@ const Overview = () => {
         <Grid item xs={12}>
           <ExpensesFeatures />
         </Grid>
-        <Grid item xs={6}>
-          foo
+        <Grid item xs={5}>
+          <Activity />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={7}>
           <ExpensesBreakdown />
         </Grid>
       </Grid>

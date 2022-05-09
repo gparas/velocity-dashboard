@@ -15,10 +15,12 @@ const getTotalExpenses = data => {
 
 const getMostSpending = data => {
   const highestPrice = U.getHighestPrice(data);
+  const { description, category } = data.filter(
+    item => item.price === highestPrice
+  )[0];
   return {
     price: U.fromatNumber(highestPrice),
-    description: data.filter(item => item.price === highestPrice)[0]
-      .description,
+    description: `${category} - ${description}`,
   };
 };
 
