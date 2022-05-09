@@ -7,6 +7,8 @@ const parseData = () =>
     Papa.parse(process.env.REACT_APP_DATA_URL, {
       download: true,
       header: true,
+      transformHeader: header => header.trim(),
+      skipEmptyLines: true,
       complete: results => {
         resolve(results.data);
       },
