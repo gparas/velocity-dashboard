@@ -1,32 +1,44 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, forwardRef } from 'react';
 import { useTheme } from '@mui/material/styles';
-import ChartJs from 'chart.js/auto';
+import ChartJS from 'chart.js/auto';
 
-const Chart = ({ config }) => {
+const Chart = forwardRef((props, ref) => {
+  const { type, data, options } = props;
   const theme = useTheme();
-  const chartRef = useRef(null);
+  const canvasRef = useRef(null);
+
+  const renderChart = () => {
+    if (!canvasRef.current) return;
+
+    ChartJS.defaults.font.size = 13;
+    ChartJS.defaults.font.family = theme.typography.fontFamily;
+    ChartJS.defaults.plugins.tooltip.titleFont = {
+      size: 12,
+      weight: theme.typography.fontWeightMedium,
+    };
+    ChartJS.defaults.plugins.tooltip.bodyFont = { size: 12 };
+
+    console.log(ChartJS.defaults);
+
+    ref.current = new ChartJS(canvasRef.current, {
+      type,
+      data,
+      options,
+    });
+  };
 
   const destroyChart = () => {
-    if (chartRef.current) {
-      chartRef.current = null;
+    if (canvasRef.current) {
+      canvasRef.current = null;
     }
   };
 
   useEffect(() => {
-    if (!chartRef.current) return;
-
-    const ctx = chartRef.current.getContext('2d');
-    ChartJs.defaults.font.size = 13;
-    ChartJs.defaults.font.family = theme.typography.fontFamily;
-    ChartJs.defaults.plugins.tooltip.titleFont = {
-      size: 12,
-      weight: theme.typography.fontWeightMedium,
-    };
-    ChartJs.defaults.plugins.tooltip.bodyFont = { size: 12 };
-    new ChartJs(ctx, config);
+    renderChart();
     return () => destroyChart();
   }, []);
-  return <canvas ref={chartRef} />;
-};
+
+  return <canvas ref={canvasRef} />;
+});
 
 export default Chart;

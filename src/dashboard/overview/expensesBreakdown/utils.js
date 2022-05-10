@@ -32,28 +32,24 @@ const getChartData = (data, theme) => {
   };
 };
 
-const getChartConfig = (data, theme) => ({
-  type: 'doughnut',
-  data: getChartData(data, theme),
-  options: {
-    cutout: '70%',
-    plugins: {
-      legend: {
-        position: 'right',
-        labels: {
-          usePointStyle: true,
-          boxWidth: 8,
-        },
+const getChartOptions = () => ({
+  cutout: '70%',
+  plugins: {
+    legend: {
+      position: 'right',
+      labels: {
+        usePointStyle: true,
+        boxWidth: 8,
       },
-      title: {
-        display: false,
-      },
-      tooltip: {
-        displayColors: false,
-        callbacks: {
-          label: ({ label, formattedValue }) => {
-            return `${label}: ${formattedValue}%`;
-          },
+    },
+    title: {
+      display: false,
+    },
+    tooltip: {
+      displayColors: false,
+      callbacks: {
+        label: ({ label, formattedValue }) => {
+          return `${label}: ${formattedValue}%`;
         },
       },
     },
@@ -61,5 +57,6 @@ const getChartConfig = (data, theme) => ({
 });
 
 export default {
-  getChartConfig,
+  getChartOptions,
+  getChartData,
 };

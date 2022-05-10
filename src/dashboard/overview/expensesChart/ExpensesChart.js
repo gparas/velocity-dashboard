@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useTheme } from '@mui/material/styles';
 import useData from '../../../hooks/useData';
 import Card from '../../../components/card';
@@ -7,9 +8,15 @@ import U from './utils';
 const ExpensesChart = () => {
   const { data, isLoading } = useData();
   const theme = useTheme();
+  const chartRef = useRef(null);
   return (
     <Card title="Expenses" isLoading={isLoading}>
-      <Chart config={U.getChartConfig(data, theme)} />
+      <Chart
+        ref={chartRef}
+        type="bar"
+        options={U.getChartOptions()}
+        data={U.getChartData(data, theme)}
+      />
     </Card>
   );
 };

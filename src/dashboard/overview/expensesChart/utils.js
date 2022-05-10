@@ -35,28 +35,25 @@ const getTooltipLabel = context => {
   return label;
 };
 
-const getChartConfig = (data, theme) => ({
-  type: 'bar',
-  data: getChartData(data, theme),
-  options: {
-    indexAxis: 'y',
-    plugins: {
-      legend: {
-        display: false,
-      },
-      title: {
-        display: false,
-      },
-      tooltip: {
-        displayColors: false,
-        callbacks: {
-          label: context => getTooltipLabel(context),
-        },
+const getChartOptions = () => ({
+  indexAxis: 'y',
+  plugins: {
+    legend: {
+      display: false,
+    },
+    title: {
+      display: false,
+    },
+    tooltip: {
+      displayColors: false,
+      callbacks: {
+        label: context => getTooltipLabel(context),
       },
     },
   },
 });
 
 export default {
-  getChartConfig,
+  getChartOptions,
+  getChartData,
 };
