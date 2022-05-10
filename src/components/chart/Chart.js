@@ -18,8 +18,6 @@ const Chart = forwardRef((props, ref) => {
     };
     ChartJS.defaults.plugins.tooltip.bodyFont = { size: 12 };
 
-    console.log(ChartJS.defaults);
-
     ref.current = new ChartJS(canvasRef.current, {
       type,
       data,
