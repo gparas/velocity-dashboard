@@ -6,24 +6,36 @@ import Roles from './Roles';
 import C from './constants';
 
 const Register = () => {
-  const [activeRole, setActiveRole] = useState(C.AVAILABLE_ROLES.ADMINISTRATOR);
-  const { signin } = useAuth();
+  const [error, setError] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [role, setRole] = useState(C.AVAILABLE_ROLES.ADMINISTRATOR);
+  const { register } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
+
+  const handleChangeRole = newRole => () => {
+    setRole(newRole);
+  };
 
   const from = location.state?.from?.pathname || '/';
-
-  const handleChangeActiveRole = newRole => () => {
-    setActiveRole(newRole);
-  };
 
   const handleSubmit = event => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const username = formData.get('email');
-    signin(username, () => {
-      navigate(from, { replace: true });
-    });
+    const email = formData.get('email');
+    const fullName = formData.get('fullName');
+    const password = formData.get('password');
+
+    setIsLoading(true);
+    register(email, password, fullName, role)
+      .then(() => {
+        setIsLoading(false);
+        navigate(from, { replace: true });
+      })
+      .catch(error => {
+        setIsLoading(false);
+        console.log(error);
+        setError(error.code);
+      });
   };
   return (
     <>
@@ -31,14 +43,13 @@ const Register = () => {
         title="Get started for free"
         subtitle="Free forever. No credit card needed."
       />
-      <Roles
-        activeRole={activeRole}
-        onChangeActiveRole={handleChangeActiveRole}
-      />
+      <Roles activeRole={role} onChangeActiveRole={handleChangeRole} />
       <Form
         fields={C.FIELDS}
-        onSubmit={handleSubmit}
         ctaLabel="Create Account"
+        error={error}
+        isLoading={isLoading}
+        onSubmit={handleSubmit}
       />
       <Footer page="register" />
     </>

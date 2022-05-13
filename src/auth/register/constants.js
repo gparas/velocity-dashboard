@@ -1,6 +1,6 @@
 const FIELDS = [
   {
-    id: 'name',
+    id: 'fullName',
     type: 'text',
     label: 'Full Name',
   },
