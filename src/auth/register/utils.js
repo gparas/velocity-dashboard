@@ -1,0 +1,60 @@
+const getFormFields = formik => {
+  return [
+    {
+      id: 'firstName',
+      name: 'firstName',
+      type: 'text',
+      label: 'First Name',
+      margin: 'normal',
+      required: true,
+      fullWidth: true,
+      value: formik.values.firstName,
+      onChange: formik.handleChange,
+      error: formik.touched.firstName && Boolean(formik.errors.firstName),
+      helperText: formik.touched.firstName && formik.errors.firstName,
+    },
+    {
+      id: 'lastName',
+      name: 'lastName',
+      type: 'text',
+      label: 'Last Name',
+      margin: 'normal',
+      required: true,
+      fullWidth: true,
+      value: formik.values.lastName,
+      onChange: formik.handleChange,
+      error: formik.touched.lastName && Boolean(formik.errors.lastName),
+      helperText: formik.touched.lastName && formik.errors.lastName,
+    },
+    {
+      id: 'email',
+      name: 'email',
+      type: 'email',
+      label: 'Email',
+      margin: 'normal',
+      required: true,
+      fullWidth: true,
+      value: formik.values.email,
+      onChange: formik.handleChange,
+      error: formik.touched.email && Boolean(formik.errors.email),
+      helperText: formik.touched.email && formik.errors.email,
+    },
+    {
+      id: 'password',
+      name: 'password',
+      type: 'password',
+      label: 'Password',
+      margin: 'normal',
+      required: true,
+      fullWidth: true,
+      value: formik.values.password,
+      onChange: formik.handleChange,
+      error: formik.touched.password && Boolean(formik.errors.password),
+      helperText: formik.touched.password && formik.errors.password,
+    },
+  ];
+};
+
+export default {
+  getFormFields,
+};

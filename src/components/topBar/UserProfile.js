@@ -5,9 +5,9 @@ import userAvatar from '../../assets/avatar.jpeg';
 import useAuth from '../../hooks/useAuth';
 
 const UserProfile = () => {
-  const { signOut } = useAuth();
+  const { logout } = useAuth();
   return (
-    <IconButton sx={{ p: 0 }} onClick={() => signOut()}>
+    <IconButton sx={{ p: 0 }} onClick={() => logout()}>
       <Avatar alt="avatar" src={userAvatar} />
     </IconButton>
   );

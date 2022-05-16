@@ -1,21 +1,3 @@
-const FIELDS = [
-  {
-    id: 'fullName',
-    type: 'text',
-    label: 'Full Name',
-  },
-  {
-    id: 'email',
-    type: 'email',
-    label: 'Email Address',
-  },
-  {
-    id: 'password',
-    type: 'password',
-    label: 'Password',
-  },
-];
-
 const AVAILABLE_ROLES = {
   ADMINISTRATOR: 'Administrator',
   OPERATOR: 'Operator',
@@ -34,6 +16,5 @@ const ROLES = [
 
 export default {
   AVAILABLE_ROLES,
-  FIELDS,
   ROLES,
 };

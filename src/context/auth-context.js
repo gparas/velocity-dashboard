@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword,
   browserSessionPersistence,
   createUserWithEmailAndPassword,
-  signOut as firebaseSignOut,
+  signOut,
   deleteUser,
 } from 'firebase/auth';
 import { getFirestore, doc, setDoc, deleteDoc } from 'firebase/firestore';
@@ -49,27 +49,21 @@ function AuthProvider(props) {
       signInWithEmailAndPassword(auth, email, password)
     );
 
-  const register = (email, password, fullName, role) =>
+  const register = (firstName, lastName, email, password, role) =>
     setPersistence(auth, browserSessionPersistence)
       .then(() => createUserWithEmailAndPassword(auth, email, password))
       .then(userCredential => {
         const uid = userCredential.user.uid;
         return setDoc(doc(db, 'users', uid), {
           uid,
-          fullName,
-          role,
+          firstName,
+          lastName,
           email,
+          role,
         });
       });
 
-  const signOut = () =>
-    firebaseSignOut(auth)
-      .then(() => {
-        console.log('Sign-out successful');
-      })
-      .catch(() => {
-        console.log('An error happened');
-      });
+  const logout = () => signOut(auth);
 
   const deleteAccount = async () =>
     await deleteDoc(doc(db, 'users', user.uid))
@@ -80,7 +74,7 @@ function AuthProvider(props) {
     user,
     authStateLoading,
     signin,
-    signOut,
+    logout,
     register,
     deleteAccount,
   };

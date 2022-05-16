@@ -10,20 +10,9 @@ const Form = ({ fields, onSubmit, ctaLabel, error, isLoading }) => {
   return (
     <Box component="form" noValidate onSubmit={onSubmit} sx={{ mt: 1 }}>
       <FormAlert error={error} />
-      {fields.map(({ id, type, label }) => {
-        return (
-          <TextField
-            key={id}
-            margin="normal"
-            required
-            fullWidth
-            id={id}
-            label={label}
-            name={id}
-            type={type}
-          />
-        );
-      })}
+      {fields.map(field => (
+        <TextField key={field.id} {...field} />
+      ))}
       <Button
         type="submit"
         fullWidth

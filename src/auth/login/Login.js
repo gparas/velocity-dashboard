@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useFormik } from 'formik';
 import { Title, Form, Footer } from '../components';
 import useAuth from '../../hooks/useAuth';
-import C from './constants';
+import { loginFormValidation } from '../../formValidation';
+import U from './utils';
 
 const Login = () => {
   const [error, setError] = useState();
@@ -12,25 +14,28 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: loginFormValidation,
+    onSubmit: values => {
+      setIsLoading(true);
+      signin(values.email, values.password)
+        .then(() => {
+          setIsLoading(false);
+          navigate(from, { replace: true });
+        })
+        .catch(error => {
+          setError(error.code);
+          setIsLoading(false);
+        });
+    },
+  });
+
   const from = location.state?.from?.pathname || '/';
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const email = formData.get('email');
-    const password = formData.get('password');
-
-    setIsLoading(true);
-    signin(email, password)
-      .then(() => {
-        setIsLoading(false);
-        navigate(from, { replace: true });
-      })
-      .catch(error => {
-        setError(error.code);
-        setIsLoading(false);
-      });
-  };
   return (
     <>
       <Title
@@ -38,11 +43,11 @@ const Login = () => {
         subtitle="Please enter your credentials to proceed."
       />
       <Form
-        fields={C.FIELDS}
+        fields={U.getFormFields(formik)}
         ctaLabel="Sign In"
         error={error}
         isLoading={isLoading}
-        onSubmit={handleSubmit}
+        onSubmit={formik.handleSubmit}
       />
       <Footer page="login" />
     </>

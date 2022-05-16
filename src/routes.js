@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 import Auth from './auth';
 import Dashboard from './dashboard';
 import RequireAuth from './components/requireAuth';
@@ -51,7 +52,7 @@ const routes = [
       {
         index: true,
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<CircularProgress />}>
             <Overview />
           </Suspense>
         ),
@@ -61,7 +62,7 @@ const routes = [
       {
         path: 'analytics',
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<CircularProgress />}>
             <Analytics />
           </Suspense>
         ),
@@ -71,7 +72,7 @@ const routes = [
       {
         path: 'chat',
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<CircularProgress />}>
             <Chat />
           </Suspense>
         ),
@@ -81,7 +82,7 @@ const routes = [
       {
         path: 'settings',
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<CircularProgress />}>
             <Settings />
           </Suspense>
         ),
