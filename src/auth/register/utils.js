@@ -1,32 +1,6 @@
 const getFormFields = formik => {
   return [
     {
-      id: 'firstName',
-      name: 'firstName',
-      type: 'text',
-      label: 'First Name',
-      margin: 'normal',
-      required: true,
-      fullWidth: true,
-      value: formik.values.firstName,
-      onChange: formik.handleChange,
-      error: formik.touched.firstName && Boolean(formik.errors.firstName),
-      helperText: formik.touched.firstName && formik.errors.firstName,
-    },
-    {
-      id: 'lastName',
-      name: 'lastName',
-      type: 'text',
-      label: 'Last Name',
-      margin: 'normal',
-      required: true,
-      fullWidth: true,
-      value: formik.values.lastName,
-      onChange: formik.handleChange,
-      error: formik.touched.lastName && Boolean(formik.errors.lastName),
-      helperText: formik.touched.lastName && formik.errors.lastName,
-    },
-    {
       id: 'email',
       name: 'email',
       type: 'email',
@@ -51,6 +25,23 @@ const getFormFields = formik => {
       onChange: formik.handleChange,
       error: formik.touched.password && Boolean(formik.errors.password),
       helperText: formik.touched.password && formik.errors.password,
+    },
+    {
+      id: 'passwordConfirmation',
+      name: 'passwordConfirmation',
+      type: 'password',
+      label: 'Confirm Password',
+      margin: 'normal',
+      required: true,
+      fullWidth: true,
+      value: formik.values.passwordConfirmation,
+      onChange: formik.handleChange,
+      error:
+        formik.touched.passwordConfirmation &&
+        Boolean(formik.errors.passwordConfirmation),
+      helperText:
+        formik.touched.passwordConfirmation &&
+        formik.errors.passwordConfirmation,
     },
   ];
 };

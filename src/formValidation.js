@@ -17,18 +17,29 @@ const validationSchema = {
     .string()
     .min(6, 'Password should be of minimum 6 characters length')
     .required('Password is required'),
+  passwordConfirmation: yup
+    .string()
+    .required('Required')
+    .oneOf([yup.ref('password'), null], 'Passwords must match'),
 };
 
-const loginFormValidation = yup.object({
+const loginValidation = yup.object({
   email: validationSchema.email,
   password: validationSchema.password,
 });
 
-const registerFormValidation = yup.object({
+const registerValidation = yup.object({
+  email: validationSchema.email,
+  password: validationSchema.password,
+  passwordConfirmation: validationSchema.passwordConfirmation,
+});
+
+const updateProfile = yup.object({
   firstName: validationSchema.firstName,
   lastName: validationSchema.lastName,
   email: validationSchema.email,
   password: validationSchema.password,
+  passwordConfirmation: validationSchema.passwordConfirmation,
 });
 
-export { loginFormValidation, registerFormValidation };
+export { loginValidation, registerValidation, updateProfile };

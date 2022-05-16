@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { Title, Form, Footer } from '../components';
 import useAuth from '../../hooks/useAuth';
-import { loginFormValidation } from '../../formValidation';
+import { loginValidation } from '../../formValidation';
 import U from './utils';
 
 const Login = () => {
@@ -19,7 +19,7 @@ const Login = () => {
       email: '',
       password: '',
     },
-    validationSchema: loginFormValidation,
+    validationSchema: loginValidation,
     onSubmit: values => {
       setIsLoading(true);
       signin(values.email, values.password)

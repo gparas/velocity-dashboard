@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormAlert from './FormAlert';
+import FormField from '../../../components/formField';
 
 const Form = ({ fields, onSubmit, ctaLabel, error, isLoading }) => {
   return (
-    <Box component="form" noValidate onSubmit={onSubmit} sx={{ mt: 1 }}>
+    <form noValidate onSubmit={onSubmit}>
       <FormAlert error={error} />
       {fields.map(field => (
-        <TextField key={field.id} {...field} />
+        <FormField key={field.id} {...field} />
       ))}
       <Button
         type="submit"
@@ -26,7 +25,7 @@ const Form = ({ fields, onSubmit, ctaLabel, error, isLoading }) => {
       >
         {ctaLabel}
       </Button>
-    </Box>
+    </form>
   );
 };
 

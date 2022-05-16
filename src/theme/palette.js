@@ -31,6 +31,7 @@ const light = {
     secondary: '#8798AD',
     disabled: '#B0BAC9',
   },
+  divider: '#E0E7FF',
   action: {
     active: '#8798AD',
   },

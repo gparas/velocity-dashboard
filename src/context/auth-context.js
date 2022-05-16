@@ -49,19 +49,10 @@ function AuthProvider(props) {
       signInWithEmailAndPassword(auth, email, password)
     );
 
-  const register = (firstName, lastName, email, password, role) =>
-    setPersistence(auth, browserSessionPersistence)
-      .then(() => createUserWithEmailAndPassword(auth, email, password))
-      .then(userCredential => {
-        const uid = userCredential.user.uid;
-        return setDoc(doc(db, 'users', uid), {
-          uid,
-          firstName,
-          lastName,
-          email,
-          role,
-        });
-      });
+  const register = (email, password) =>
+    setPersistence(auth, browserSessionPersistence).then(() =>
+      createUserWithEmailAndPassword(auth, email, password)
+    );
 
   const logout = () => signOut(auth);
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
 import useAuth from '../../hooks/useAuth';
-import { registerFormValidation } from '../../formValidation';
+import { registerValidation } from '../../formValidation';
 import { Title, Form, Footer } from '../components';
 import Roles from './Roles';
 import C from './constants';
@@ -24,21 +24,14 @@ const Register = () => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
       email: '',
       password: '',
+      passwordConfirmation: '',
     },
-    validationSchema: registerFormValidation,
+    validationSchema: registerValidation,
     onSubmit: values => {
       setIsLoading(true);
-      register(
-        values.firstName,
-        values.lastName,
-        values.email,
-        values.password,
-        role
-      )
+      register(values.email, values.password)
         .then(() => {
           setIsLoading(false);
           navigate(from, { replace: true });
