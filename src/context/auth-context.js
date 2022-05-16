@@ -10,7 +10,7 @@ import {
   signOut as firebaseSignOut,
   deleteUser,
 } from 'firebase/auth';
-import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, setDoc, deleteDoc } from 'firebase/firestore';
 
 const AuthContext = createContext();
 
@@ -71,7 +71,10 @@ function AuthProvider(props) {
         console.log('An error happened');
       });
 
-  const deleteAccount = () => deleteUser(user);
+  const deleteAccount = async () =>
+    await deleteDoc(doc(db, 'users', user.uid))
+      .then(() => deleteUser(user))
+      .catch(error => console.log(error));
 
   const value = {
     user,

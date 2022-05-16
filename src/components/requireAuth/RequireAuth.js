@@ -1,12 +1,13 @@
 import { useLocation, Navigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import FullPageLoading from '../fullPageLoading';
 
 const RequireAuth = ({ children }) => {
   const { user, authStateLoading } = useAuth();
   const location = useLocation();
 
   if (authStateLoading) {
-    return <div>loading</div>;
+    return <FullPageLoading open />;
   }
 
   if (!user) {
