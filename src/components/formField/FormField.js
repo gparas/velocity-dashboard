@@ -9,6 +9,7 @@ const FormField = ({
   label,
   name,
   error,
+  required,
   helperText,
   ...other
 }) => {
@@ -18,9 +19,10 @@ const FormField = ({
       fullWidth={fullWidth}
       sx={{ position: 'relative' }}
     >
-      <Input name={name} error={error} {...other} />
+      <Input name={name} error={error} required={required} {...other} />
       <Label name={name} error={error}>
         {label}
+        {required && '*'}
       </Label>
       {helperText ? <HelperText error={error}>{helperText}</HelperText> : null}
     </FormControl>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { updateProfile } from 'firebase/auth';
 import useAuth from '../../hooks/useAuth';
 import { registerValidation } from '../../formValidation';
 import { Title, Form, Footer } from '../components';
@@ -24,6 +25,7 @@ const Register = () => {
 
   const formik = useFormik({
     initialValues: {
+      fullName: '',
       email: '',
       password: '',
       passwordConfirmation: '',
@@ -32,6 +34,10 @@ const Register = () => {
     onSubmit: values => {
       setIsLoading(true);
       register(values.email, values.password)
+        .then(userCredential => {
+          const user = userCredential.user;
+          updateProfile(user, { displayName: values.fullName });
+        })
         .then(() => {
           setIsLoading(false);
           navigate(from, { replace: true });

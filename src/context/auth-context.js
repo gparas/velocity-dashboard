@@ -44,7 +44,7 @@ function AuthProvider(props) {
     });
   }, []);
 
-  const signin = (email, password) =>
+  const login = (email, password) =>
     setPersistence(auth, browserSessionPersistence).then(() =>
       signInWithEmailAndPassword(auth, email, password)
     );
@@ -64,7 +64,7 @@ function AuthProvider(props) {
   const value = {
     user,
     authStateLoading,
-    signin,
+    login,
     logout,
     register,
     deleteAccount,

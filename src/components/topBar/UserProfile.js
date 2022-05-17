@@ -1,15 +1,32 @@
-import React from 'react';
-import Avatar from '@mui/material/Avatar';
+import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
-import userAvatar from '../../assets/avatar.jpeg';
-import useAuth from '../../hooks/useAuth';
+import UserAvatar from '../userAvatar';
+import Menu from './Menu';
 
 const UserProfile = () => {
-  const { logout } = useAuth();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
   return (
-    <IconButton sx={{ p: 0 }} onClick={() => logout()}>
-      <Avatar alt="avatar" src={userAvatar} />
-    </IconButton>
+    <>
+      <IconButton sx={{ p: 0 }} onClick={handleClick}>
+        <UserAvatar />
+      </IconButton>
+      <Menu
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        onClick={handleClose}
+      />
+    </>
   );
 };
 

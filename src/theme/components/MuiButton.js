@@ -8,7 +8,7 @@ const styleOverrides = {
     padding: '0 16px',
   },
   containedSizeLarge: {
-    height: 50,
+    height: 48,
     padding: '0 22px',
   },
 };

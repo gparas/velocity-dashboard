@@ -5,16 +5,17 @@ import Fade from '@mui/material/Fade';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { selectors } from '../../store/navigation';
 import routes from '../../routes';
-import userAvatar from '../../assets/avatar.jpeg';
 import Drawer from './Drawer';
 import Link from './Link';
+import UserAvatar from '../userAvatar';
+import useAuth from '../../hooks/useAuth';
 
 const Navigation = () => {
+  const { user } = useAuth();
   const isOpen = useSelector(selectors.getNavigationIsOpen);
   return (
     <Drawer
@@ -29,9 +30,13 @@ const Navigation = () => {
         <Fade in={isOpen}>
           <ListItem component="div" sx={{ my: 3 }}>
             <ListItemAvatar>
-              <Avatar alt="avatar" src={userAvatar} variant="rounded" />
+              <UserAvatar variant="rounded" />
             </ListItemAvatar>
-            <ListItemText primary="Welcome" secondary="Joan Wilkins" />
+            <ListItemText
+              primary="Welcome"
+              secondary={user.displayName}
+              secondaryTypographyProps={{ noWrap: true }}
+            />
           </ListItem>
         </Fade>
         {routes

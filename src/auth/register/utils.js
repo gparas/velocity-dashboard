@@ -1,13 +1,20 @@
 const getFormFields = formik => {
   return [
     {
+      id: 'fullName',
+      name: 'fullName',
+      type: 'text',
+      label: 'Full Name',
+      value: formik.values.fullName,
+      onChange: formik.handleChange,
+      error: formik.touched.fullName && Boolean(formik.errors.fullName),
+      helperText: formik.touched.fullName && formik.errors.fullName,
+    },
+    {
       id: 'email',
       name: 'email',
       type: 'email',
       label: 'Email',
-      margin: 'normal',
-      required: true,
-      fullWidth: true,
       value: formik.values.email,
       onChange: formik.handleChange,
       error: formik.touched.email && Boolean(formik.errors.email),
@@ -18,9 +25,6 @@ const getFormFields = formik => {
       name: 'password',
       type: 'password',
       label: 'Password',
-      margin: 'normal',
-      required: true,
-      fullWidth: true,
       value: formik.values.password,
       onChange: formik.handleChange,
       error: formik.touched.password && Boolean(formik.errors.password),
@@ -31,9 +35,6 @@ const getFormFields = formik => {
       name: 'passwordConfirmation',
       type: 'password',
       label: 'Confirm Password',
-      margin: 'normal',
-      required: true,
-      fullWidth: true,
       value: formik.values.passwordConfirmation,
       onChange: formik.handleChange,
       error:

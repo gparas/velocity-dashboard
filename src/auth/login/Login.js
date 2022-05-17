@@ -10,7 +10,7 @@ const Login = () => {
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  const { signin } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,7 +22,7 @@ const Login = () => {
     validationSchema: loginValidation,
     onSubmit: values => {
       setIsLoading(true);
-      signin(values.email, values.password)
+      login(values.email, values.password)
         .then(() => {
           setIsLoading(false);
           navigate(from, { replace: true });

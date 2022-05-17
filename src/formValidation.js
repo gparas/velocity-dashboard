@@ -9,6 +9,10 @@ const validationSchema = {
     .string()
     .max(20, 'Must be 20 characters or less')
     .required('Last name is required'),
+  fullName: yup
+    .string()
+    .max(40, 'Must be 40 characters or less')
+    .required('Full name is required'),
   email: yup
     .string()
     .email('Enter a valid email')
@@ -29,17 +33,15 @@ const loginValidation = yup.object({
 });
 
 const registerValidation = yup.object({
+  fullName: validationSchema.fullName,
   email: validationSchema.email,
   password: validationSchema.password,
   passwordConfirmation: validationSchema.passwordConfirmation,
 });
 
-const updateProfile = yup.object({
-  firstName: validationSchema.firstName,
-  lastName: validationSchema.lastName,
+const generalInfoValidation = yup.object({
   email: validationSchema.email,
-  password: validationSchema.password,
-  passwordConfirmation: validationSchema.passwordConfirmation,
+  fullName: validationSchema.fullName,
 });
 
-export { loginValidation, registerValidation, updateProfile };
+export { loginValidation, registerValidation, generalInfoValidation };

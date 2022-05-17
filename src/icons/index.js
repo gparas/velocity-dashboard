@@ -10,3 +10,4 @@ export { default as Notification } from './Notification';
 export { default as Options } from './Options';
 export { default as Settings } from './Settings';
 export { default as LogoIcon } from './LogoIcon';
+export { default as Logout } from './Logout';
