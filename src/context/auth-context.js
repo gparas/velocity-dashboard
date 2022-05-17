@@ -1,5 +1,6 @@
 import { useState, createContext, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import {
   getAuth,
   onAuthStateChanged,
@@ -10,7 +11,7 @@ import {
   signOut,
   deleteUser,
 } from 'firebase/auth';
-import { getFirestore, doc, setDoc, deleteDoc } from 'firebase/firestore';
+import { getFirestore, doc, deleteDoc } from 'firebase/firestore';
 
 const AuthContext = createContext();
 
@@ -24,13 +25,14 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
 
 function AuthProvider(props) {
   const [authStateLoading, setAuthStateLoading] = useState(true);
   const [user, setUser] = useState(null);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+  const auth = getAuth(firebaseApp);
+  const db = getFirestore(firebaseApp);
+  const storage = getStorage(firebaseApp);
 
   useEffect(() => {
     onAuthStateChanged(auth, user => {
@@ -56,6 +58,13 @@ function AuthProvider(props) {
 
   const logout = () => signOut(auth);
 
+  const uploadAvatar = async file => {
+    const uploadPath = `avatars/${user.uid}`;
+    const storageRef = ref(storage, uploadPath);
+    const img = await uploadBytes(storageRef, file);
+    return getDownloadURL(img.ref);
+  };
+
   const deleteAccount = async () =>
     await deleteDoc(doc(db, 'users', user.uid))
       .then(() => deleteUser(user))
@@ -68,6 +77,7 @@ function AuthProvider(props) {
     logout,
     register,
     deleteAccount,
+    uploadAvatar,
   };
   return <AuthContext.Provider value={value} {...props} />;
 }

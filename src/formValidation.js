@@ -44,4 +44,14 @@ const generalInfoValidation = yup.object({
   fullName: validationSchema.fullName,
 });
 
-export { loginValidation, registerValidation, generalInfoValidation };
+const passwordValidation = yup.object({
+  password: validationSchema.password,
+  passwordConfirmation: validationSchema.passwordConfirmation,
+});
+
+export {
+  loginValidation,
+  registerValidation,
+  generalInfoValidation,
+  passwordValidation,
+};
