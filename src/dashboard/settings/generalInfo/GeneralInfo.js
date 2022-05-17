@@ -4,20 +4,20 @@ import { updateProfile } from 'firebase/auth';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-import Link from '@mui/material/Link';
 import useAuth from '../../../hooks/useAuth';
 import { generalInfoValidation } from '../../../formValidation';
 import { Card, FormField, SubmitButton } from '../../../components';
+import Label from './Label';
 import U from './utils';
 
-const GeneralInfo = () => {
+const GeneralInfo = ({ handleOpenSnackbar }) => {
   const { user, uploadAvatar } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState(null);
 
   const formik = useFormik({
     initialValues: {
-      avatar: '',
+      avatar: user.photoURL,
       email: user.email,
       fullName: user.displayName,
     },
@@ -33,6 +33,7 @@ const GeneralInfo = () => {
         })
         .then(() => {
           setIsLoading(false);
+          handleOpenSnackbar();
         })
         .catch(error => {
           console.log(error);
@@ -46,27 +47,9 @@ const GeneralInfo = () => {
       <Box sx={{ mb: 3, width: 72 }}>
         <Avatar
           sx={{ width: 72, height: 72 }}
-          src={avatarPreview || user?.photoURL}
+          src={avatarPreview || user.photoURL}
         />
-        <Link
-          component="label"
-          htmlFor="avatar"
-          underline="hover"
-          align="center"
-          display="block"
-          sx={[
-            {
-              '&:hover': {
-                cursor: 'pointer',
-              },
-            },
-            theme => ({
-              fontSize: theme.typography.pxToRem(13),
-            }),
-          ]}
-        >
-          change
-        </Link>
+        <Label htmlFor="avatar" />
       </Box>
       <Box component="form" noValidate onSubmit={formik.handleSubmit}>
         <input

@@ -4,12 +4,8 @@ import useAuth from '../../hooks/useAuth';
 
 const UserAvatar = ({ ...other }) => {
   const { user } = useAuth();
-  const displayName = user.displayName;
-  return (
-    <Avatar alt={displayName} src={user.photoURL} {...other}>
-      {displayName.charAt(0)}
-    </Avatar>
-  );
+  const { displayName, photoURL } = user;
+  return <Avatar alt={displayName} src={photoURL} {...other} />;
 };
 
 export default UserAvatar;
