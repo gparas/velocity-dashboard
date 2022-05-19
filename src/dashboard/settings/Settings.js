@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import PageTitle from '../../components/pageTitle';
 import GeneralInfo from './generalInfo';
 import ChangePassword from './changePassword';
+import DeleteAccount from './deleteAccount';
 import Snackbar from './snackbar';
 
 const Settings = () => {
@@ -23,7 +23,7 @@ const Settings = () => {
       <PageTitle>Settings</PageTitle>
       <GeneralInfo handleOpenSnackbar={handleOpenSnackbar} />
       <ChangePassword handleOpenSnackbar={handleOpenSnackbar} />
-      <Button color="error">delete account</Button>
+      <DeleteAccount />
       <Snackbar open={openSnackbar} onClose={handleCloseSnackbar} />
     </Container>
   );
