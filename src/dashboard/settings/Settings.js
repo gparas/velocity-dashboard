@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import PageTitle from '../../components/pageTitle';
 import GeneralInfo from './generalInfo';
-import Password from './password';
+import ChangePassword from './changePassword';
 import Snackbar from './snackbar';
 
 const Settings = () => {
@@ -22,7 +22,7 @@ const Settings = () => {
     <Container>
       <PageTitle>Settings</PageTitle>
       <GeneralInfo handleOpenSnackbar={handleOpenSnackbar} />
-      <Password handleOpenSnackbar={handleOpenSnackbar} />
+      <ChangePassword handleOpenSnackbar={handleOpenSnackbar} />
       <Button color="error">delete account</Button>
       <Snackbar open={openSnackbar} onClose={handleCloseSnackbar} />
     </Container>

@@ -17,7 +17,7 @@ const GeneralInfo = ({ handleOpenSnackbar }) => {
   const [avatarPreview, setAvatarPreview] = useState(null);
 
   const uploadAvatar = async file => {
-    const uploadPath = `avatars/${user.uid}`;
+    const uploadPath = `users/${user.uid}/avatar`;
     const storageRef = ref(storage, uploadPath);
     const img = await uploadBytes(storageRef, file);
     return getDownloadURL(img.ref);

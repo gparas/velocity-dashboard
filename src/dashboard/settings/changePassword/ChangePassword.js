@@ -9,7 +9,7 @@ import { passwordValidation } from '../../../formValidation';
 import { Card, FormField, SubmitButton } from '../../../components';
 import U from './utils';
 
-const Password = ({ handleOpenSnackbar }) => {
+const ChangePassword = ({ handleOpenSnackbar }) => {
   const user = auth.currentUser;
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -58,4 +58,4 @@ const Password = ({ handleOpenSnackbar }) => {
   );
 };
 
-export default Password;
+export default ChangePassword;
