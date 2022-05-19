@@ -5,7 +5,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import CssBaseline from '@mui/material/CssBaseline';
-import { AuthProvider } from './context/auth-context';
 import theme from './theme';
 import store from './store';
 
@@ -20,11 +19,9 @@ root.render(
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <AuthProvider>
-            <Provider store={store}>
-              <App />
-            </Provider>
-          </AuthProvider>
+          <Provider store={store}>
+            <App />
+          </Provider>
         </ThemeProvider>
       </BrowserRouter>
     </QueryClientProvider>

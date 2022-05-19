@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { updateProfile } from 'firebase/auth';
-import useAuth from '../../hooks/useAuth';
+import { updateProfile, createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase';
 import { registerValidation } from '../../formValidation';
 import { Title, Form, Footer } from '../components';
 import Roles from './Roles';
@@ -13,7 +13,6 @@ const Register = () => {
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [role, setRole] = useState(C.AVAILABLE_ROLES.ADMINISTRATOR);
-  const { register } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -33,7 +32,7 @@ const Register = () => {
     validationSchema: registerValidation,
     onSubmit: values => {
       setIsLoading(true);
-      register(values.email, values.password)
+      createUserWithEmailAndPassword(auth, values.email, values.password)
         .then(userCredential => {
           const user = userCredential.user;
           updateProfile(user, { displayName: values.fullName });

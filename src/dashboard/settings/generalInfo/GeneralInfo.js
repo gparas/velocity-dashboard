@@ -1,19 +1,27 @@
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import { updateProfile } from 'firebase/auth';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-import useAuth from '../../../hooks/useAuth';
+import { auth, storage } from '../../../firebase';
 import { generalInfoValidation } from '../../../formValidation';
 import { Card, FormField, SubmitButton } from '../../../components';
 import Label from './Label';
 import U from './utils';
 
 const GeneralInfo = ({ handleOpenSnackbar }) => {
-  const { user, uploadAvatar } = useAuth();
+  const user = auth.currentUser;
   const [isLoading, setIsLoading] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState(null);
+
+  const uploadAvatar = async file => {
+    const uploadPath = `avatars/${user.uid}`;
+    const storageRef = ref(storage, uploadPath);
+    const img = await uploadBytes(storageRef, file);
+    return getDownloadURL(img.ref);
+  };
 
   const formik = useFormik({
     initialValues: {

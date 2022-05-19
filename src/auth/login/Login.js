@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Title, Form, Footer } from '../components';
-import useAuth from '../../hooks/useAuth';
+import { auth } from '../../firebase';
 import { loginValidation } from '../../formValidation';
 import U from './utils';
 
@@ -10,7 +11,6 @@ const Login = () => {
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,7 +22,7 @@ const Login = () => {
     validationSchema: loginValidation,
     onSubmit: values => {
       setIsLoading(true);
-      login(values.email, values.password)
+      signInWithEmailAndPassword(auth, values.email, values.password)
         .then(() => {
           setIsLoading(false);
           navigate(from, { replace: true });

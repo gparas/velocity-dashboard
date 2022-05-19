@@ -1,12 +1,12 @@
 import { Link as RouterLink } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 import MuiMenu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { Settings as SettingsIcon, Logout as LogoutIcon } from '../../icons';
-import useAuth from '../../hooks/useAuth';
+import { auth } from '../../firebase';
 
 const Menu = ({ ...other }) => {
-  const { logout } = useAuth();
   return (
     <MuiMenu
       id="account-menu"
@@ -20,7 +20,7 @@ const Menu = ({ ...other }) => {
         </ListItemIcon>
         Settings
       </MenuItem>
-      <MenuItem onClick={() => logout()}>
+      <MenuItem onClick={() => signOut(auth)}>
         <ListItemIcon>
           <LogoutIcon fontSize="small" />
         </ListItemIcon>

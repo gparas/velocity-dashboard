@@ -12,10 +12,10 @@ import routes from '../../routes';
 import Drawer from './Drawer';
 import Link from './Link';
 import UserAvatar from '../userAvatar';
-import useAuth from '../../hooks/useAuth';
+import { auth } from '../../firebase';
 
 const Navigation = () => {
-  const { user } = useAuth();
+  const user = auth.currentUser;
   const isOpen = useSelector(selectors.getNavigationIsOpen);
   return (
     <Drawer

@@ -4,13 +4,13 @@ import { updatePassword } from 'firebase/auth';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
-import useAuth from '../../../hooks/useAuth';
+import { auth } from '../../../firebase';
 import { passwordValidation } from '../../../formValidation';
 import { Card, FormField, SubmitButton } from '../../../components';
 import U from './utils';
 
 const Password = ({ handleOpenSnackbar }) => {
-  const { user } = useAuth();
+  const user = auth.currentUser;
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
