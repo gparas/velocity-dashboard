@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Toolbar from '@mui/material/Toolbar';
 import Fade from '@mui/material/Fade';
 import List from '@mui/material/List';
@@ -13,9 +13,13 @@ import Drawer from './Drawer';
 import Link from './Link';
 import UserAvatar from '../userAvatar';
 import { auth } from '../../firebase';
+import { toggleOpen } from '../../store/navigation/navigationSlice';
+import useIsMobile from '../../hooks/useIsMobile';
 
 const Navigation = () => {
   const user = auth.currentUser;
+  const dispatch = useDispatch();
+  const isMobile = useIsMobile();
   const isOpen = useSelector(selectors.getNavigationIsOpen);
   return (
     <Drawer
@@ -43,7 +47,11 @@ const Navigation = () => {
           .filter(route => route.path === '/')[0]
           .children.map(({ icon, text, path }) => {
             return (
-              <Link key={text} to={path || '/'}>
+              <Link
+                key={text}
+                to={path || '/'}
+                onClick={() => isMobile && isOpen && dispatch(toggleOpen())}
+              >
                 <ListItemIcon sx={{ color: 'inherit' }}>{icon}</ListItemIcon>
                 <ListItemText primary={text} />
               </Link>

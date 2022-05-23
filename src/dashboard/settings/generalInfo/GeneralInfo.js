@@ -8,11 +8,13 @@ import Avatar from '@mui/material/Avatar';
 import { auth, storage } from '../../../firebase';
 import { generalInfoValidation } from '../../../formValidation';
 import { Card, FormField, SubmitButton } from '../../../components';
+import useIsMobile from '../../../hooks/useIsMobile';
 import Label from './Label';
 import U from './utils';
 
 const GeneralInfo = ({ handleOpenSnackbar }) => {
   const user = auth.currentUser;
+  const isMobile = useIsMobile();
   const [isLoading, setIsLoading] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState(null);
 
@@ -77,11 +79,11 @@ const GeneralInfo = ({ handleOpenSnackbar }) => {
         <Stack
           spacing={2}
           direction={{ xs: 'column', sm: 'row' }}
-          alignItems="flex-end"
+          alignItems="flex-start"
           sx={{ mb: 2 }}
         >
           {fields.map(field => (
-            <FormField key={field.id} {...field} />
+            <FormField key={field.id} fullWidth={isMobile} {...field} />
           ))}
         </Stack>
         <SubmitButton isLoading={isLoading}>Update Info</SubmitButton>

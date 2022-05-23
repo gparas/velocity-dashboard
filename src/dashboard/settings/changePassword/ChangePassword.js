@@ -7,10 +7,12 @@ import Alert from '@mui/material/Alert';
 import { auth } from '../../../firebase';
 import { passwordValidation } from '../../../formValidation';
 import { Card, FormField, SubmitButton } from '../../../components';
+import useIsMobile from '../../../hooks/useIsMobile';
 import U from './utils';
 
 const ChangePassword = ({ handleOpenSnackbar }) => {
   const user = auth.currentUser;
+  const isMobile = useIsMobile();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -49,7 +51,7 @@ const ChangePassword = ({ handleOpenSnackbar }) => {
           sx={{ mb: 2 }}
         >
           {fields.map(field => (
-            <FormField key={field.id} {...field} />
+            <FormField key={field.id} fullWidth={isMobile} {...field} />
           ))}
         </Stack>
         <SubmitButton isLoading={isLoading}>Update Password</SubmitButton>

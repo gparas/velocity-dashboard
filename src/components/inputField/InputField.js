@@ -21,6 +21,7 @@ const Input = styled(InputBase)(({ theme }) => ({
   '& .MuiInputBase-input': {
     height: 22,
     padding: theme.spacing(1.5, 2),
+    fontSize: theme.typography.pxToRem(16),
   },
   '&.Mui-focused + label': {
     color: theme.palette.primary.main,

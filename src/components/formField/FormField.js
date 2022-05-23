@@ -24,6 +24,7 @@ const FormField = ({
     >
       <InputComponent
         name={name}
+        type={type}
         error={error}
         required={required}
         {...other}
