@@ -4,7 +4,9 @@ import { useFormik } from 'formik';
 import { updateProfile, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { registerValidation } from '../../formValidation';
-import { Title, Form, Footer } from '../components';
+import Form from '../../components/form';
+import Title from '../title';
+import Footer from '../footer';
 import Roles from './Roles';
 import C from './constants';
 import U from './utils';
@@ -57,10 +59,14 @@ const Register = () => {
       <Roles activeRole={role} onChangeActiveRole={handleChangeRole} />
       <Form
         fields={U.getFormFields(formik)}
-        ctaLabel="Create Account"
-        error={error}
+        serverError={error}
         isLoading={isLoading}
         onSubmit={formik.handleSubmit}
+        submitButtonProps={{
+          label: 'Create Account',
+          size: 'large',
+          fullWidth: true,
+        }}
       />
       <Footer page="register" />
     </>

@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import { updatePassword } from 'firebase/auth';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Alert from '@mui/material/Alert';
 import { auth } from '../../../firebase';
 import { passwordValidation } from '../../../formValidation';
-import { Card, FormField, SubmitButton } from '../../../components';
-import useIsMobile from '../../../hooks/useIsMobile';
+import { Card, Form } from '../../../components';
 import U from './utils';
 
 const ChangePassword = ({ handleOpenSnackbar }) => {
   const user = auth.currentUser;
-  const isMobile = useIsMobile();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,24 +33,16 @@ const ChangePassword = ({ handleOpenSnackbar }) => {
   const fields = U.getFormFields(formik);
   return (
     <Card title="Change password">
-      {error ? (
-        <Alert severity="error" sx={{ mb: 3 }} onClose={() => setError(null)}>
-          {error}
-        </Alert>
-      ) : null}
-      <Box component="form" noValidate onSubmit={formik.handleSubmit}>
-        <Stack
-          spacing={2}
-          direction={{ xs: 'column', sm: 'row' }}
-          alignItems="flex-start"
-          sx={{ mb: 2 }}
-        >
-          {fields.map(field => (
-            <FormField key={field.id} fullWidth={isMobile} {...field} />
-          ))}
-        </Stack>
-        <SubmitButton isLoading={isLoading}>Update Password</SubmitButton>
-      </Box>
+      <Form
+        fields={fields}
+        onSubmit={formik.handleSubmit}
+        isLoading={isLoading}
+        serverError={error}
+        direction={{ xs: 'column', sm: 'row' }}
+        submitButtonProps={{
+          label: 'Update Password',
+        }}
+      />
     </Card>
   );
 };

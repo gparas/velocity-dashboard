@@ -13,6 +13,7 @@ const FormField = ({
   required,
   helperText,
   type,
+  hidden,
   ...other
 }) => {
   const InputComponent = type === 'password' ? PasswordField : Input;
@@ -20,19 +21,15 @@ const FormField = ({
     <FormControl
       margin={margin}
       fullWidth={fullWidth}
-      sx={{ position: 'relative' }}
+      sx={{ position: 'relative', display: hidden ? 'none' : 'inline-flex' }}
     >
-      <InputComponent
-        name={name}
-        type={type}
-        error={error}
-        required={required}
-        {...other}
-      />
-      <Label name={name} error={error}>
-        {label}
-        {required && '*'}
-      </Label>
+      <InputComponent type={type} error={error} {...other} />
+      {label ? (
+        <Label name={name} error={error}>
+          {label}
+          {required && '*'}
+        </Label>
+      ) : null}
       {helperText ? <HelperText error={error}>{helperText}</HelperText> : null}
     </FormControl>
   );

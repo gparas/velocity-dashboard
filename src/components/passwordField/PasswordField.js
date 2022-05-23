@@ -19,6 +19,7 @@ const PasswordField = ({ disabled, ...other }) => {
       endAdornment={
         <InputAdornment position="end">
           <IconButton
+            tabIndex={-1}
             onClick={toggleVisibility}
             onMouseDown={handleButtonMouseDown}
             disabled={other.disabled}

@@ -1,4 +1,4 @@
-const getFormFields = formik => {
+const getFormFields = (formik, handleFileUpload) => {
   return [
     {
       id: 'email',
@@ -20,6 +20,16 @@ const getFormFields = formik => {
       onChange: formik.handleChange,
       error: formik.touched.fullName && Boolean(formik.errors.fullName),
       helperText: formik.touched.fullName && formik.errors.fullName,
+    },
+    {
+      id: 'avatar',
+      name: 'avatar',
+      type: 'file',
+      onChange: handleFileUpload,
+      hidden: true,
+      inputProps: {
+        accept: '.jpg, .png',
+      },
     },
   ];
 };

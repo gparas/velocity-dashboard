@@ -16,7 +16,7 @@ const IconComponents = {
 
 const Roles = ({ activeRole, onChangeActiveRole }) => {
   return (
-    <Grid container spacing={2.5}>
+    <Grid container spacing={2.5} sx={{ mb: 3 }}>
       {C.ROLES.map(({ title, text }) => {
         const IconComponent = IconComponents[title];
         const active = activeRole === title;

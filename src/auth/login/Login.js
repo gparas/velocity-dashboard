@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { Title, Form, Footer } from '../components';
 import { auth } from '../../firebase';
 import { loginValidation } from '../../formValidation';
+import Form from '../../components/form';
+import Title from '../title';
+import Footer from '../footer';
 import U from './utils';
 
 const Login = () => {
@@ -44,10 +46,14 @@ const Login = () => {
       />
       <Form
         fields={U.getFormFields(formik)}
-        ctaLabel="Sign In"
-        error={error}
+        serverError={error}
         isLoading={isLoading}
         onSubmit={formik.handleSubmit}
+        submitButtonProps={{
+          label: 'Sign In',
+          size: 'large',
+          fullWidth: true,
+        }}
       />
       <Footer page="login" />
     </>

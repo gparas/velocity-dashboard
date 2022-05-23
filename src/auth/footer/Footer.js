@@ -7,7 +7,7 @@ import C from './constants';
 
 const Footer = ({ page }) => {
   return (
-    <Typography color="textSecondary" textAlign="center">
+    <Typography color="textSecondary" textAlign="center" sx={{ mt: 2 }}>
       {C.PAGES[page].text}{' '}
       <Link to={C.PAGES[page].linkUrl} component={RouterLink} underline="hover">
         {C.PAGES[page].linkText}

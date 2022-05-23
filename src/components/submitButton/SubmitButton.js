@@ -1,7 +1,7 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
 
-const SubmitButton = ({ isLoading, ...other }) => (
+const SubmitButton = ({ isLoading, label, ...other }) => (
   <Button
     type="submit"
     variant="contained"
@@ -10,7 +10,9 @@ const SubmitButton = ({ isLoading, ...other }) => (
       isLoading ? <CircularProgress color="inherit" size={24} /> : null
     }
     {...other}
-  />
+  >
+    {label}
+  </Button>
 );
 
 export default SubmitButton;
