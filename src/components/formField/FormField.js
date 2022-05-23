@@ -1,6 +1,7 @@
 import FormControl from '@mui/material/FormControl';
+import PasswordField from '../passwordField';
 import HelperText from './HelperText';
-import Input from './Input';
+import Input from '../inputField';
 import Label from './Label';
 
 const FormField = ({
@@ -11,15 +12,22 @@ const FormField = ({
   error,
   required,
   helperText,
+  type,
   ...other
 }) => {
+  const InputComponent = type === 'password' ? PasswordField : Input;
   return (
     <FormControl
       margin={margin}
       fullWidth={fullWidth}
       sx={{ position: 'relative' }}
     >
-      <Input name={name} error={error} required={required} {...other} />
+      <InputComponent
+        name={name}
+        error={error}
+        required={required}
+        {...other}
+      />
       <Label name={name} error={error}>
         {label}
         {required && '*'}
