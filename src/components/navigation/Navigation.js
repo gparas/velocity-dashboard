@@ -7,13 +7,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { selectors } from '../../store/navigation';
+import { selectors, actions } from '../../store/navigation';
 import routes from '../../routes';
 import Drawer from './Drawer';
 import Link from './Link';
 import UserAvatar from '../userAvatar';
 import { auth } from '../../firebase';
-import { toggleOpen } from '../../store/navigation/navigationSlice';
 import useIsMobile from '../../hooks/useIsMobile';
 
 const Navigation = () => {
@@ -50,7 +49,9 @@ const Navigation = () => {
               <Link
                 key={text}
                 to={path || '/'}
-                onClick={() => isMobile && isOpen && dispatch(toggleOpen())}
+                onClick={() =>
+                  isMobile && isOpen && dispatch(actions.toggleOpen())
+                }
               >
                 <ListItemIcon sx={{ color: 'inherit' }}>{icon}</ListItemIcon>
                 <ListItemText primary={text} />

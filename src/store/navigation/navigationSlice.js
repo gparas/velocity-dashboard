@@ -12,6 +12,4 @@ const navigationSlice = createSlice({
   },
 });
 
-export const { toggleOpen } = navigationSlice.actions;
-
-export default navigationSlice.reducer;
+export default navigationSlice;
