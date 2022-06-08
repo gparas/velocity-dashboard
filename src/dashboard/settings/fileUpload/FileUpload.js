@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Form } from '../../../components';
 import { selectors, actions } from '../../../store/data';
+import UploadButton from './UploadButton';
 import U from './utils';
 
 const FileUpload = () => {
@@ -18,22 +19,13 @@ const FileUpload = () => {
   });
   const handleFileUpload = event => {
     const [file] = event.target.files;
-    if (file) {
-      formik.setFieldValue('file', file);
-    }
+    U.parseData(file)
+      .then(result => result)
+      .catch(error => error);
   };
-  const fields = U.getFormFields(handleFileUpload);
   return (
     <Card title="Upload Expenses">
-      <Form
-        fields={fields}
-        onSubmit={formik.handleSubmit}
-        isLoading={isLoading}
-        direction={{ xs: 'column', sm: 'row' }}
-        submitButtonProps={{
-          label: 'Upload File',
-        }}
-      />
+      <UploadButton onChange={handleFileUpload} />
     </Card>
   );
 };

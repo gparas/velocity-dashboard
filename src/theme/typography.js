@@ -41,6 +41,12 @@ const variants = theme => {
       lineHeight: U.round(22 / 15),
       letterSpacing: 0,
     },
+    body2: {
+      fontFamily,
+      fontSize: fontSize(13),
+      lineHeight: U.round(19 / 13),
+      letterSpacing: 0,
+    },
     caption: {
       fontFamily,
       fontSize: fontSize(12),
@@ -57,7 +63,6 @@ const variants = theme => {
     },
     subtitle1: undefined,
     subtitle2: undefined,
-    body2: undefined,
     overline: undefined,
   };
 };

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import FormField from '../formField';
+import TextField from '../textField';
 import SubmitButton from '../submitButton';
 import FormAlert from '../formAlert';
 
@@ -24,7 +24,7 @@ const Form = ({
           sx={{ mb: 2 }}
         >
           {fields.map(field => (
-            <FormField key={field.id} {...field} />
+            <TextField key={field.id} {...field} />
           ))}
         </Stack>
         <SubmitButton isLoading={isLoading} {...submitButtonProps} />
