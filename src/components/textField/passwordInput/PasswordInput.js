@@ -22,7 +22,7 @@ const PasswordInput = ({ input, disabled }) => {
           onMouseDown={handleButtonMouseDown}
           disabled={disabled}
         >
-          {on ? <Visibility /> : <VisibilityOff />}
+          {visible ? <Visibility /> : <VisibilityOff />}
         </IconButton>
       </InputAdornment>
     ),
